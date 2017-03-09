@@ -1,6 +1,6 @@
 package track.lessons.lesson1;
 
-import java.io.File;
+import java.io.*;
 
 /**
  * Задание 1: Реализовать два метода
@@ -30,9 +30,28 @@ public class CountWords {
      * @param file - файл с данными
      * @return - целое число - сумма всех чисел из файла
      */
+    int intAnswer; // default answer
     public long countNumbers(File file) throws Exception {
-        return 0;
-    }
+        FileReader fr = new FileReader(file); // load file in reader
+        BufferedReader reader = new BufferedReader(fr); // read string in buffer
+        String line = reader.readLine(); // load string in line
+        while((line != null)){ // if line is null end circle and return 0
+            if(line.isEmpty()){  // if line ecuals empty run this
+                line = reader.readLine(); // take new string in line
+                continue; // next count of circle
+            }
+            try { // if line take integer
+                intAnswer += Integer.parseInt(line); // sub line with answer
+            }  catch(NumberFormatException e){ // when line not integer
+                line = reader.readLine(); // take new string line
+                continue; // next count of circle
+            }
+         line = reader.readLine(); // take new string line
+        }
+        return intAnswer; // return answer
+        }
+
+
 
 
     /**
@@ -42,8 +61,29 @@ public class CountWords {
      * @param file - файл с данными
      * @return - результирующая строка
      */
+    String lineAnswer = ""; // default answer
     public String concatWords(File file) throws Exception {
-        return null;
+        FileReader fr = new FileReader(file); // load file in reader
+        BufferedReader reader = new BufferedReader(fr); // read string in buffer
+        String line = reader.readLine(); // load string in line
+        while((line != null)){ // if line is null end circle and return 0
+           // System.out.println(line);  // debug
+           // System.out.println(lineAnswer); // debug
+            if(line.isEmpty()){  // if line equal empty run this
+                line = reader.readLine(); // take new string in line
+                continue; // next count of circle
+             }
+            try { // if line take integer
+                Integer.parseInt(line); //
+            }  catch(NumberFormatException e){ // catch exception
+                lineAnswer = lineAnswer + " " + line ; // add words in line and add space firstly
+                //line = reader.readLine();
+                //continue;
+            }
+            line = reader.readLine(); // take new string in line
+
+        }
+        return lineAnswer.trim(); // return answer
     }
 
 }
