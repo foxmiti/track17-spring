@@ -32,7 +32,7 @@ public class CountWords {
      * @param file - файл с данными
      * @return - целое число - сумма всех чисел из файла
      */
-    long LongAnswer;
+    long longAnswer;
     /**
      * Метод на вход принимает объект File, изначально результат= ""
      * Нужно пройти по всем строкам файла, и если в строка не пустая и не число
@@ -53,14 +53,14 @@ public class CountWords {
                 continue;
             }
             try {
-                LongAnswer += Long.parseLong(line);
+                longAnswer += Long.parseLong(line);
             } catch (NumberFormatException e) {
                 line = reader.readLine();
                 continue;
             }
             line = reader.readLine();
         }
-        return LongAnswer;
+        return longAnswer;
     }
 
     public String concatWords(File file) throws Exception {
