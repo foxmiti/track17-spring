@@ -16,7 +16,7 @@ public class MyArrayListTest {
         for (int i = 0; i < 1000; i++) {
             list.add(i);
         }
-
+        System.out.print(list.size());
         Assert.assertTrue(list.size() == 1000);
     }
 
@@ -37,6 +37,7 @@ public class MyArrayListTest {
     @Test(expected = NoSuchElementException.class)
     public void emptyList() throws Exception {
         List list = new MyArrayList();
+        System.out.print(list.size());
         Assert.assertTrue(list.size() == 0);
         list.get(0);
     }

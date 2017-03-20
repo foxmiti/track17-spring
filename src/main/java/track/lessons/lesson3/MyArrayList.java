@@ -4,38 +4,63 @@ import java.util.NoSuchElementException;
 
 /**
  * Должен наследовать List
- *
- * Должен иметь 2 конструктора
- * - без аргументов - создает внутренний массив дефолтного размера на ваш выбор
- * - с аргументом - начальный размер массива
  */
 public class MyArrayList extends List {
+    private static final int defListLong = 32;
+    public int[] array;
+
 
     public MyArrayList() {
-
+        this(defListLong);
     }
 
-    public MyArrayList(int capacity) {
-
+    public MyArrayList(int dimension) {
+        array = new int[dimension];
     }
 
     @Override
-    void add(int item) {
+    void add(int forAdd) {
+        if (size + 1 < array.length) {
+            array[size] = forAdd;
+            size++;
+        } else {
+            resize(size * 10 + 1);
+            array[size] = forAdd;
+            ++size;
+        }
 
+    }
+
+    private void resize(int newDimension) {
+        int[] newArray = new int[newDimension];
+        System.arraycopy(array, 0, newArray, 0, size);
+        array = newArray;
     }
 
     @Override
     int remove(int idx) throws NoSuchElementException {
-        return 0;
+        if (idx < size) {
+            int returnInt = array[idx];
+            if (size > idx + 1) {
+                System.arraycopy(array, idx + 1, array, idx, size - idx - 1);
+            }
+
+
+            --size;
+            return returnInt;
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
     @Override
     int get(int idx) throws NoSuchElementException {
-        return 0;
+        if (idx < size) {
+            return array[idx];
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 
-    @Override
-    int size() {
-        return 0;
-    }
+
 }
