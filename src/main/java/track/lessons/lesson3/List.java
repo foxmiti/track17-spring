@@ -16,6 +16,7 @@ public abstract class List {
     public List() {
         size = 0;
     }
+
     /**
      * Добавить элемент в конец списка
      */
