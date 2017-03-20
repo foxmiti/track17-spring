@@ -1,5 +1,9 @@
 package track.lessons.lesson1;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 /**
  * Задание 1: Реализовать два метода
  * <p>
